@@ -37,4 +37,21 @@ function decodeString(s) {
   return str;
 };
 
+//Quesiton3
+function changePossibilities(amount, denominations) {
+  let answers = [];
 
+  for (let n = 1; n <= amount; n++) {
+      answers[n] = 0;
+  }
+  answers[0] = 1;
+
+  denominations.forEach(function(denomination){
+      for (let i = denomination; i <= amount; i++) {
+          let rem = i - denomination;
+          answers[i] += answers[rem];
+      }
+  });
+
+  return answers[amount];
+}
